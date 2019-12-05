@@ -26,7 +26,6 @@ class Tests: XCTestCase {
     
     func testAnswer() {
         let answer = day1.calculateFuel(for: input1.getValues())
-        print(answer)
         XCTAssertEqual(answer, 3497399)
     }
 
