@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Tests: XCTestCase {
+class Day1Tests: XCTestCase {
 
     let input1 = InputDay1()
     let day1 = Day1()
