@@ -9,8 +9,7 @@
 import Foundation
 
 class Day5 {
-    
-    
+
     func compute(input inputValue: Int, program original: [Int]) -> [Int] {
         var pointer = 0
         var intcode = original
