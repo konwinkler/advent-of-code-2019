@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C77E4EE923A1DBF20073B5A4 /* Day7.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EE823A1DBF20073B5A4 /* Day7.swift */; };
+		C77E4EEA23A1DBF20073B5A4 /* Day7.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EE823A1DBF20073B5A4 /* Day7.swift */; };
+		C77E4EEC23A1DC4D0073B5A4 /* Day7Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */; };
 		C796DDFE239899520046A9FF /* Day2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFD239899520046A9FF /* Day2Tests.swift */; };
 		C796DE00239899670046A9FF /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFF239899670046A9FF /* Day2.swift */; };
 		C796DE01239899E50046A9FF /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFF239899670046A9FF /* Day2.swift */; };
@@ -52,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C77E4EE823A1DBF20073B5A4 /* Day7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day7.swift; sourceTree = "<group>"; };
+		C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day7Tests.swift; sourceTree = "<group>"; };
 		C796DDFD239899520046A9FF /* Day2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2Tests.swift; sourceTree = "<group>"; };
 		C796DDFF239899670046A9FF /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
 		C796DE0223989CC70046A9FF /* InputDay2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDay2.swift; sourceTree = "<group>"; };
@@ -115,6 +120,7 @@
 				C796DE0D239B57E00046A9FF /* Day4.swift */,
 				C796DE15239C40CB0046A9FF /* Day5.swift */,
 				C796DE1D239D75B50046A9FF /* Day6.swift */,
+				C77E4EE823A1DBF20073B5A4 /* Day7.swift */,
 			);
 			path = Days;
 			sourceTree = "<group>";
@@ -155,6 +161,7 @@
 				C796DE0F239B58620046A9FF /* Day4Tests.swift */,
 				C796DE18239C9CEB0046A9FF /* Day5Tests.swift */,
 				C796DE20239D76010046A9FF /* Day6Tests.swift */,
+				C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */,
 				C7A7618E239741D200091DB3 /* Info.plist */,
 			);
 			path = Tests;
@@ -250,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7A761932397421D00091DB3 /* InputDay1.swift in Sources */,
+				C77E4EE923A1DBF20073B5A4 /* Day7.swift in Sources */,
 				C796DE082398A09C0046A9FF /* Day3.swift in Sources */,
 				C796DE0323989CC70046A9FF /* InputDay2.swift in Sources */,
 				C796DE1E239D75B50046A9FF /* Day6.swift in Sources */,
@@ -282,8 +290,10 @@
 				C7A7619723974B0600091DB3 /* Day1.swift in Sources */,
 				C796DE062398A0820046A9FF /* Day3Tests.swift in Sources */,
 				C796DE14239B5C5E0046A9FF /* InputDay4.swift in Sources */,
+				C77E4EEC23A1DC4D0073B5A4 /* Day7Tests.swift in Sources */,
 				C796DE0C239B537C0046A9FF /* InputDay3.swift in Sources */,
 				C796DE092398A1880046A9FF /* Day3.swift in Sources */,
+				C77E4EEA23A1DBF20073B5A4 /* Day7.swift in Sources */,
 				C796DE21239D76010046A9FF /* Day6Tests.swift in Sources */,
 				C7A7619423974AB100091DB3 /* InputDay1.swift in Sources */,
 			);

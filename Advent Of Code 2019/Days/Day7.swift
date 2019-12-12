@@ -1,52 +1,55 @@
 //
-//  Day5.swift
+//  Day7.swift
 //  Advent Of Code 2019
 //
-//  Created by Konrad Winkler on 12/7/19.
+//  Created by Konrad Winkler on 12/11/19.
 //  Copyright © 2019 konwinkler. All rights reserved.
 //
 
 import Foundation
 
-class Day5 {
-
-    func compute(input inputValue: Int, program original: [Int]) -> [Int] {
+class Day7 {
+    
+    func computePhases(with sequence: [Int], on intcode: [Int]) -> Int {
+        var output: Int?
+        sequence.forEach({
+            var input = [$0]
+            if( output != nil) {
+                input.append(output!)
+            }
+            output = self.compute(input: input, program: intcode).last ?? 0
+        })
+        
+        return output ?? 0
+    }
+    
+    func compute(input inputValues: [Int], program original: [Int]) -> [Int] {
         var pointer = 0
         var intcode = original
         var output = 0
+        var inputCopy = inputValues.reversed() as [Int]
         
         while true {
             let instruction = self.readInstruction(from: intcode[pointer])
 
             switch instruction.opCode {
-            case .addition:
+            case .Addition:
                 let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
                 let second = instruction.modeSecondParameter == .Position ? intcode[pointer + 2] : pointer + 2
                 let target = instruction.modeThirdParameter == .Position ? intcode[pointer + 3] : pointer + 3
                 intcode[target] = intcode[first] + intcode[second]
-            case .multiplication:
+            case .Multiplication:
                 let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
                 let second = instruction.modeSecondParameter == .Position ? intcode[pointer + 2] : pointer + 2
                 let target = instruction.modeThirdParameter == .Position ? intcode[pointer + 3] : pointer + 3
                 intcode[target] = intcode[first] * intcode[second]
-            case .input:
+            case .Input:
                 let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
-                intcode[first] = inputValue
-            case .output:
+                intcode[first] = inputCopy.popLast() ?? 0
+            case .Output:
                 let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
                 output = intcode[first]
-            case .equals:
-                let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
-                let second = instruction.modeSecondParameter == .Position ? intcode[pointer + 2] : pointer + 2
-                let target = instruction.modeThirdParameter == .Position ? intcode[pointer + 3] : pointer + 3
-                intcode[target] = (intcode[first] == intcode[second]) ? 1 : 0
-            case .lessThan:
-                break
-            case .jumpIfTrue:
-                break
-            case .jumpIfFalse:
-                break
-            case .halt:
+            case .Halt:
                 intcode.append(output)
                 return intcode
             }
@@ -63,7 +66,7 @@ class Day5 {
         }
         
         let digitOpCode = digits.popLast()! + digits.popLast()! * 10
-        let opCode = OpCode.init(rawValue: digitOpCode) ?? .addition
+        let opCode = OpCode.init(rawValue: digitOpCode) ?? .Addition
         
         let modeFirstParameter = ParaneterMode.init(rawValue: digits.popLast()!) ?? .Position
         let modeSecondParameter = ParaneterMode.init(rawValue: digits.popLast()!) ?? .Position
@@ -80,9 +83,9 @@ class Day5 {
         
         var increment: Int {
             switch opCode {
-            case .addition, .multiplication, .equals, .lessThan:
+            case .Addition, .Multiplication:
                 return 4
-            case .input, .output, .jumpIfFalse, .jumpIfTrue:
+            case .Input, .Output:
                 return 2
             default:
                 return 1
@@ -91,15 +94,11 @@ class Day5 {
     }
     
     enum OpCode: Int {
-        case addition = 1
-        case multiplication = 2
-        case input = 3
-        case output = 4
-        case jumpIfTrue = 5
-        case jumpIfFalse = 6
-        case lessThan = 7
-        case equals = 8
-        case halt = 99
+        case Addition = 1
+        case Multiplication = 2
+        case Input = 3
+        case Output = 4
+        case Halt = 99
     }
     
     enum ParaneterMode: Int {
