@@ -10,6 +10,7 @@
 		C77E4EE923A1DBF20073B5A4 /* Day7.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EE823A1DBF20073B5A4 /* Day7.swift */; };
 		C77E4EEA23A1DBF20073B5A4 /* Day7.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EE823A1DBF20073B5A4 /* Day7.swift */; };
 		C77E4EEC23A1DC4D0073B5A4 /* Day7Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */; };
+		C77E4EEE23A56B5C0073B5A4 /* Day5Part2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EED23A56B5C0073B5A4 /* Day5Part2Tests.swift */; };
 		C796DDFE239899520046A9FF /* Day2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFD239899520046A9FF /* Day2Tests.swift */; };
 		C796DE00239899670046A9FF /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFF239899670046A9FF /* Day2.swift */; };
 		C796DE01239899E50046A9FF /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFF239899670046A9FF /* Day2.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		C77E4EE823A1DBF20073B5A4 /* Day7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day7.swift; sourceTree = "<group>"; };
 		C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day7Tests.swift; sourceTree = "<group>"; };
+		C77E4EED23A56B5C0073B5A4 /* Day5Part2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5Part2Tests.swift; sourceTree = "<group>"; };
 		C796DDFD239899520046A9FF /* Day2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2Tests.swift; sourceTree = "<group>"; };
 		C796DDFF239899670046A9FF /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
 		C796DE0223989CC70046A9FF /* InputDay2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDay2.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				C796DE052398A0820046A9FF /* Day3Tests.swift */,
 				C796DE0F239B58620046A9FF /* Day4Tests.swift */,
 				C796DE18239C9CEB0046A9FF /* Day5Tests.swift */,
+				C77E4EED23A56B5C0073B5A4 /* Day5Part2Tests.swift */,
 				C796DE20239D76010046A9FF /* Day6Tests.swift */,
 				C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */,
 				C7A7618E239741D200091DB3 /* Info.plist */,
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77E4EEE23A56B5C0073B5A4 /* Day5Part2Tests.swift in Sources */,
 				C796DE0423989D480046A9FF /* InputDay2.swift in Sources */,
 				C796DE11239B58770046A9FF /* Day4.swift in Sources */,
 				C7A7618D239741D200091DB3 /* Day1Tests.swift in Sources */,

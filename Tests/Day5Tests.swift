@@ -12,12 +12,6 @@ class Day5Tests: XCTestCase {
     
     let day = Day5()
     let input = InputDay5()
-    
-    func testPart2equals() {
-        let intcode = [3,9,8,9,10,9,4,9,99,-1,8]
-        XCTAssertEqual(day.compute(input: 8, program: intcode).last!, 1)
-        XCTAssertEqual(day.compute(input: 7, program: intcode).last!, 0)
-    }
 
     func testSimpleCases() {
         XCTAssertEqual(day.compute(input: 0, program: [1, 0, 0, 3, 99]), [1, 0, 0, 2, 99, 0])

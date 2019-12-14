@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension Collection where Indices.Iterator.Element == Index {
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
 class Day5 {
 
     func compute(input inputValue: Int, program original: [Int]) -> [Int] {
@@ -17,41 +23,46 @@ class Day5 {
         
         while true {
             let instruction = self.readInstruction(from: intcode[pointer])
+            let first = instruction.modeFirstParameter == .Position ? intcode[safe: pointer + 1] ?? 0 : pointer + 1
+            let second = instruction.modeSecondParameter == .Position ? intcode[safe: pointer + 2] ?? 0 : pointer + 2
+            let target = instruction.modeThirdParameter == .Position ? intcode[safe: pointer + 3] ?? 0 : pointer + 3
 
             switch instruction.opCode {
             case .addition:
-                let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
-                let second = instruction.modeSecondParameter == .Position ? intcode[pointer + 2] : pointer + 2
-                let target = instruction.modeThirdParameter == .Position ? intcode[pointer + 3] : pointer + 3
                 intcode[target] = intcode[first] + intcode[second]
+                pointer += instruction.increment
             case .multiplication:
-                let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
-                let second = instruction.modeSecondParameter == .Position ? intcode[pointer + 2] : pointer + 2
-                let target = instruction.modeThirdParameter == .Position ? intcode[pointer + 3] : pointer + 3
                 intcode[target] = intcode[first] * intcode[second]
+                pointer += instruction.increment
             case .input:
-                let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
                 intcode[first] = inputValue
+                pointer += instruction.increment
             case .output:
-                let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
                 output = intcode[first]
+                pointer += instruction.increment
             case .equals:
-                let first = instruction.modeFirstParameter == .Position ? intcode[pointer + 1] : pointer + 1
-                let second = instruction.modeSecondParameter == .Position ? intcode[pointer + 2] : pointer + 2
-                let target = instruction.modeThirdParameter == .Position ? intcode[pointer + 3] : pointer + 3
                 intcode[target] = (intcode[first] == intcode[second]) ? 1 : 0
+                pointer += instruction.increment
             case .lessThan:
-                break
+                intcode[target] = (intcode[first] < intcode[second]) ? 1 : 0
+                pointer += instruction.increment
             case .jumpIfTrue:
-                break
+                if (intcode[first] != 0) {
+                    pointer = intcode[second]
+                } else {
+                    pointer += instruction.increment
+                }
             case .jumpIfFalse:
-                break
+                if (intcode[first] == 0) {
+                    pointer = intcode[second]
+                } else {
+                    pointer += instruction.increment
+                }
             case .halt:
                 intcode.append(output)
                 return intcode
             }
 
-            pointer += instruction.increment
         }
     }
     
@@ -82,7 +93,9 @@ class Day5 {
             switch opCode {
             case .addition, .multiplication, .equals, .lessThan:
                 return 4
-            case .input, .output, .jumpIfFalse, .jumpIfTrue:
+            case .jumpIfFalse, .jumpIfTrue:
+                return 3
+            case .input, .output:
                 return 2
             default:
                 return 1
