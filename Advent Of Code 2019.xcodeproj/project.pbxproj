@@ -18,6 +18,9 @@
 		C77E4EEE23A56B5C0073B5A4 /* Day5Part2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EED23A56B5C0073B5A4 /* Day5Part2Tests.swift */; };
 		C77E4EF023A5E9F00073B5A4 /* InputDay7.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EEF23A5E9F00073B5A4 /* InputDay7.swift */; };
 		C77E4EF123A5E9F00073B5A4 /* InputDay7.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4EEF23A5E9F00073B5A4 /* InputDay7.swift */; };
+		C792E1EC23A71861000FDCA4 /* Day9Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792E1EB23A71861000FDCA4 /* Day9Tests.swift */; };
+		C792E1EE23A718AC000FDCA4 /* Day9.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792E1ED23A718AC000FDCA4 /* Day9.swift */; };
+		C792E1EF23A718AC000FDCA4 /* Day9.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792E1ED23A718AC000FDCA4 /* Day9.swift */; };
 		C796DDFE239899520046A9FF /* Day2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFD239899520046A9FF /* Day2Tests.swift */; };
 		C796DE00239899670046A9FF /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFF239899670046A9FF /* Day2.swift */; };
 		C796DE01239899E50046A9FF /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796DDFF239899670046A9FF /* Day2.swift */; };
@@ -70,6 +73,8 @@
 		C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day7Tests.swift; sourceTree = "<group>"; };
 		C77E4EED23A56B5C0073B5A4 /* Day5Part2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5Part2Tests.swift; sourceTree = "<group>"; };
 		C77E4EEF23A5E9F00073B5A4 /* InputDay7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDay7.swift; sourceTree = "<group>"; };
+		C792E1EB23A71861000FDCA4 /* Day9Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day9Tests.swift; sourceTree = "<group>"; };
+		C792E1ED23A718AC000FDCA4 /* Day9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day9.swift; sourceTree = "<group>"; };
 		C796DDFD239899520046A9FF /* Day2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2Tests.swift; sourceTree = "<group>"; };
 		C796DDFF239899670046A9FF /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
 		C796DE0223989CC70046A9FF /* InputDay2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDay2.swift; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 				C796DE1D239D75B50046A9FF /* Day6.swift */,
 				C77E4EE823A1DBF20073B5A4 /* Day7.swift */,
 				C719F72123A6BB8D006E7B7C /* Day8.swift */,
+				C792E1ED23A718AC000FDCA4 /* Day9.swift */,
 			);
 			path = Days;
 			sourceTree = "<group>";
@@ -180,6 +186,7 @@
 				C796DE20239D76010046A9FF /* Day6Tests.swift */,
 				C77E4EEB23A1DC4D0073B5A4 /* Day7Tests.swift */,
 				C719F72423A6BBEE006E7B7C /* Day8Tests.swift */,
+				C792E1EB23A71861000FDCA4 /* Day9Tests.swift */,
 				C7A7618E239741D200091DB3 /* Info.plist */,
 			);
 			path = Tests;
@@ -280,6 +287,7 @@
 				C77E4EE923A1DBF20073B5A4 /* Day7.swift in Sources */,
 				C796DE082398A09C0046A9FF /* Day3.swift in Sources */,
 				C796DE0323989CC70046A9FF /* InputDay2.swift in Sources */,
+				C792E1EE23A718AC000FDCA4 /* Day9.swift in Sources */,
 				C796DE1E239D75B50046A9FF /* Day6.swift in Sources */,
 				C796DE1B239CA9130046A9FF /* InputDay5.swift in Sources */,
 				C796DE0B239B52B00046A9FF /* InputDay3.swift in Sources */,
@@ -307,6 +315,7 @@
 				C796DE19239C9CEB0046A9FF /* Day5Tests.swift in Sources */,
 				C796DE10239B58620046A9FF /* Day4Tests.swift in Sources */,
 				C796DDFE239899520046A9FF /* Day2Tests.swift in Sources */,
+				C792E1EC23A71861000FDCA4 /* Day9Tests.swift in Sources */,
 				C796DE17239C40CB0046A9FF /* Day5.swift in Sources */,
 				C796DE1C239CA9130046A9FF /* InputDay5.swift in Sources */,
 				C796DE1F239D75B50046A9FF /* Day6.swift in Sources */,
@@ -321,6 +330,7 @@
 				C77E4EEA23A1DBF20073B5A4 /* Day7.swift in Sources */,
 				C796DE21239D76010046A9FF /* Day6Tests.swift in Sources */,
 				C7A7619423974AB100091DB3 /* InputDay1.swift in Sources */,
+				C792E1EF23A718AC000FDCA4 /* Day9.swift in Sources */,
 				C77E4EF123A5E9F00073B5A4 /* InputDay7.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
