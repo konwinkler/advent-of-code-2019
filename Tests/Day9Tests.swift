@@ -129,7 +129,7 @@ class Day9Tests: XCTestCase {
         XCTAssertEqual(day.compute(input: [1], program: intcode).last!, 1)
     }
 
-    func skiptestRelativeSimple() {
+    func testRelativeSimple() {
         let intcode = [109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99]
         let answer = day.compute(input: [], program: intcode)
         XCTAssertEqual(answer, intcode)

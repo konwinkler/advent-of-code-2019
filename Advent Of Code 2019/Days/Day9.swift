@@ -48,7 +48,7 @@ class Day9 {
 
             let first = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer + 1, relativeBaseOffset: relativeBaseOffset)
             let second = self.pointer(by: instruction.modeSecondParameter, intcode: intcode, pointer: pointer + 2, relativeBaseOffset: relativeBaseOffset)
-            let third = self.pointer(by: instruction.modeSecondParameter, intcode: intcode, pointer: pointer + 3, relativeBaseOffset: relativeBaseOffset)
+            let third = self.pointer(by: instruction.modeThirdParameter, intcode: intcode, pointer: pointer + 3, relativeBaseOffset: relativeBaseOffset)
             
             switch instruction.opCode {
             case .addition:
