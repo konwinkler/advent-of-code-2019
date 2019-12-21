@@ -47,44 +47,55 @@ class Day9 {
             let instruction = self.readInstruction(from: intcode[pointer])
 
             let first = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer + 1, relativeBaseOffset: relativeBaseOffset)
-            let second = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer + 2, relativeBaseOffset: relativeBaseOffset)
-            let third = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer + 3, relativeBaseOffset: relativeBaseOffset)
+            let second = self.pointer(by: instruction.modeSecondParameter, intcode: intcode, pointer: pointer + 2, relativeBaseOffset: relativeBaseOffset)
+            let third = self.pointer(by: instruction.modeSecondParameter, intcode: intcode, pointer: pointer + 3, relativeBaseOffset: relativeBaseOffset)
             
             switch instruction.opCode {
             case .addition:
+                print("Store \(intcode[safe: first]) + \(intcode[safe: second]) at \(third)")
                 intcode[safe: third] = intcode[safe: first] + intcode[safe: second]
                 pointer += instruction.increment
             case .multiplication:
+                print("Store \(intcode[safe: first]) * \(intcode[safe: second]) at \(third)")
                 intcode[safe: third] = intcode[safe: first] * intcode[safe: second]
                 pointer += instruction.increment
             case .input:
-                intcode[safe: first] = inputCopy.popLast() ?? 0
+                let value = inputCopy.popLast() ?? 0
+                print("Store \(value) from input at \(first)")
+                intcode[safe: first] = value
                 pointer += instruction.increment
             case .output:
+                print("Output \(intcode[safe: first])")
                 output = intcode[safe: first]
                 pointer += instruction.increment
             case .equals:
+                print("Store \(intcode[safe: first]) == \(intcode[safe: second]) at \(third)")
                 intcode[safe: third] = (intcode[safe: first] == intcode[safe: second]) ? 1 : 0
                 pointer += instruction.increment
             case .lessThan:
+                print("Store \(intcode[safe: first]) < \(intcode[safe: second]) at \(third)")
                 intcode[safe: third] = (intcode[safe: first] < intcode[safe: second]) ? 1 : 0
                 pointer += instruction.increment
             case .jumpIfTrue:
+                print("Jump to \(intcode[safe: second]) if \(intcode[safe: first]) != 0")
                 if (intcode[safe: first] != 0) {
                     pointer = intcode[safe: second]
                 } else {
                     pointer += instruction.increment
                 }
             case .jumpIfFalse:
+                print("Jump to \(intcode[safe: second]) if \(intcode[safe: first]) == 0")
                 if (intcode[safe: first] == 0) {
                     pointer = intcode[safe: second]
                 } else {
                     pointer += instruction.increment
                 }
             case .adjustRelativeBase:
+                print("Adjust relative base to \(intcode[safe: first])")
                 relativeBaseOffset = intcode[safe: first]
                 pointer += instruction.increment
             case .halt:
+                print("halt")
                 if (output != nil) {
                     intcode.append(output!)
                 }
