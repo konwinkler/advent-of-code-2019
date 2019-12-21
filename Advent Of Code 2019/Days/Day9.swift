@@ -8,6 +8,22 @@
 
 import Foundation
 
+extension Array where Array.Element == Int {
+    
+    subscript(safe index: Int) -> Int {
+        get {
+            return indices.contains(index) ? self[index] : 0
+        }
+        
+        set {
+            while(self.count <= index) {
+                self.append(0)
+            }
+            self[index] = newValue
+        }
+    }
+}
+
 class Day9 {
     func pointer(by mode: ParameterMode, intcode: [Int], pointer: Int, relativeBaseOffset: Int) -> Int {
         switch (mode) {
@@ -30,43 +46,43 @@ class Day9 {
         while true {
             let instruction = self.readInstruction(from: intcode[pointer])
 
-            let first = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer, relativeBaseOffset: relativeBaseOffset)
-            let second = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer, relativeBaseOffset: relativeBaseOffset)
-            let third = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer, relativeBaseOffset: relativeBaseOffset)
-
+            let first = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer + 1, relativeBaseOffset: relativeBaseOffset)
+            let second = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer + 2, relativeBaseOffset: relativeBaseOffset)
+            let third = self.pointer(by: instruction.modeFirstParameter, intcode: intcode, pointer: pointer + 3, relativeBaseOffset: relativeBaseOffset)
+            
             switch instruction.opCode {
             case .addition:
-                intcode[third] = intcode[first] + intcode[second]
+                intcode[safe: third] = intcode[safe: first] + intcode[safe: second]
                 pointer += instruction.increment
             case .multiplication:
-                intcode[third] = intcode[first] * intcode[second]
+                intcode[safe: third] = intcode[safe: first] * intcode[safe: second]
                 pointer += instruction.increment
             case .input:
-                intcode[first] = inputCopy.popLast() ?? 0
+                intcode[safe: first] = inputCopy.popLast() ?? 0
                 pointer += instruction.increment
             case .output:
-                output = intcode[first]
+                output = intcode[safe: first]
                 pointer += instruction.increment
             case .equals:
-                intcode[third] = (intcode[first] == intcode[second]) ? 1 : 0
+                intcode[safe: third] = (intcode[safe: first] == intcode[safe: second]) ? 1 : 0
                 pointer += instruction.increment
             case .lessThan:
-                intcode[third] = (intcode[first] < intcode[second]) ? 1 : 0
+                intcode[safe: third] = (intcode[safe: first] < intcode[safe: second]) ? 1 : 0
                 pointer += instruction.increment
             case .jumpIfTrue:
-                if (intcode[first] != 0) {
-                    pointer = intcode[second]
+                if (intcode[safe: first] != 0) {
+                    pointer = intcode[safe: second]
                 } else {
                     pointer += instruction.increment
                 }
             case .jumpIfFalse:
-                if (intcode[first] == 0) {
-                    pointer = intcode[second]
+                if (intcode[safe: first] == 0) {
+                    pointer = intcode[safe: second]
                 } else {
                     pointer += instruction.increment
                 }
             case .adjustRelativeBase:
-                relativeBaseOffset = intcode[first]
+                relativeBaseOffset = intcode[safe: first]
                 pointer += instruction.increment
             case .halt:
                 if (output != nil) {
