@@ -36,10 +36,10 @@ class Day9 {
         }
     }
     
-    func compute(input inputValues: [Int], program original: [Int]) -> [Int] {
+    func computeOutput(input inputValues: [Int], program original: [Int]) -> [Int] {
         var pointer = 0
         var intcode = original
-        var output: Int?
+        var output: [Int] = []
         var inputCopy = inputValues.reversed() as [Int]
         var relativeBaseOffset = 0
         
@@ -66,7 +66,7 @@ class Day9 {
                 pointer += instruction.increment
             case .output:
                 print("Output \(intcode[safe: first])")
-                output = intcode[safe: first]
+                output.append(intcode[safe: first])
                 pointer += instruction.increment
             case .equals:
                 print("Store \(intcode[safe: first]) == \(intcode[safe: second]) at \(third)")
@@ -91,15 +91,12 @@ class Day9 {
                     pointer += instruction.increment
                 }
             case .adjustRelativeBase:
-                print("Adjust relative base to \(intcode[safe: first])")
-                relativeBaseOffset = intcode[safe: first]
+                print("Increment relative base by \(intcode[safe: first]), to \(relativeBaseOffset + intcode[safe: first])")
+                relativeBaseOffset += intcode[safe: first]
                 pointer += instruction.increment
             case .halt:
                 print("halt")
-                if (output != nil) {
-                    intcode.append(output!)
-                }
-                return intcode
+                return output
             }
 
         }
