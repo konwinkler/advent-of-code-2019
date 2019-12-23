@@ -11,6 +11,7 @@ import XCTest
 class Day9Tests: XCTestCase {
     
     let day = Day9()
+    let input = InputDay9()
     
     func testExtendSubscript() {
         var a: [Int] = []
@@ -139,6 +140,30 @@ class Day9Tests: XCTestCase {
         let intcode = [109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99]
         let answer = day.computeOutput(input: [], program: intcode)
         XCTAssertEqual(answer, intcode)
+    }
+    
+    func testSixteenDigit() {
+        let intcode = [1102,34915192,34915192,7,4,7,99,0]
+        let answer = day.computeOutput(input: [], program: intcode)
+        XCTAssertEqual(answer, [1219070632396864])
+    }
+    
+    func testOutputMiddle() {
+        let intcode = [104,1125899906842624,99]
+        let answer = day.computeOutput(input: [], program: intcode)
+        XCTAssertEqual(answer, [1125899906842624])
+    }
+    
+    func testAnswer() {
+        let intcode = input.get()
+        let answer = day.computeOutput(input: [1], program: intcode)
+        XCTAssertEqual(answer, [2890527621])
+    }
+
+    func testAnswerPart2() {
+        let intcode = input.get()
+        let answer = day.computeOutput(input: [2], program: intcode)
+        XCTAssertEqual(answer, [66772])
     }
 
 }
