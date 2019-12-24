@@ -59,33 +59,62 @@ struct Location: Equatable, Comparable {
         return lhs.seenAsteriods < rhs.seenAsteriods
     }
     
-    mutating func calculateSeenAsteriods(in map: [Location]) -> () {
+    func distance(_ other: Location) -> Int {
+        return abs(self.x - other.x) + abs(self.y - other.y)
+    }
+    
+    mutating func calculateSeenAsteriods(in allAsteroids: [Location]) -> () {
+        // sort allAsteroids by distance to self
+        let asteroids = allAsteroids.sorted(by: {
+            $0.distance(self) < $1.distance(self)
+        })
+        
         var result = 0
-        var cache: [Location] = []
-        map.forEach({
-            if($0 != self && !blocked(existing: cache, element: $0)) {
+        var seenAsteroids: [Location] = []
+        asteroids.forEach({
+            let isSelf = $0 == self
+            let visible = isVisible(obstacles: seenAsteroids, element: $0)
+            
+            if(!isSelf && visible) {
                 result += 1
-                cache.append($0)
+                seenAsteroids.append($0)
             }
         })
         self.seenAsteriods = result
     }
     
-    func blocked(existing locations: [Location], element: Location) -> Bool {
-        // blocked if cross poduct is zero
+    func isVisible(obstacles locations: [Location], element: Location) -> Bool {
         for location in locations {
-            let dxc = self.x - location.x;
-            let dyc = self.y - location.y;
-
-            let dxl = element.x - location.x;
-            let dyl = element.y - location.y;
-            
-            let cross = dxc * dyl - dyc * dxl
-            if (cross == 0) {
-                return true
+            let isBetween = isPointBetweenPoints(location, self, element)
+            if(isBetween) {
+                return false
             }
         }
-        
+        return true
+    }
+}
+
+func isPointBetweenPoints(_ currPoint: Location, _ point1: Location, _ point2: Location) -> Bool {
+    // https://stackoverflow.com/questions/11907947/how-to-check-if-a-point-lies-on-a-line-between-2-other-points
+    let dxc = currPoint.x - point1.x;
+    let dyc = currPoint.y - point1.y;
+
+    let dxl = point2.x - point1.x;
+    let dyl = point2.y - point1.y;
+
+    let cross = dxc * dyl - dyc * dxl;
+    
+    if (cross != 0) {
         return false
+    }
+    
+    if (abs(dxl) >= abs(dyl)) {
+      return dxl > 0 ?
+        point1.x <= currPoint.x && currPoint.x <= point2.x :
+        point2.x <= currPoint.x && currPoint.x <= point1.x
+    } else {
+      return dyl > 0 ?
+        point1.y <= currPoint.y && currPoint.y <= point2.y :
+        point2.y <= currPoint.y && currPoint.y <= point1.y
     }
 }
